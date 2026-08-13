@@ -200,7 +200,51 @@ A=B
 \]
 
 \end{frame}
+%-------------------------------------------------
+\begin{frame}{Relations}
 
+\footnotesize
+
+\textbf{Definition}
+
+A relation from a set $A$ to a set $B$ is a subset of the Cartesian
+product $A\times B$.
+
+\[
+R\subseteq A\times B
+\]
+
+If $(a,b)\in R$, then $a$ is related to $b$, written as $aRb$.
+
+\vspace{0.2cm}
+
+\textbf{Example:}
+
+Let
+
+\[
+A=\{\text{CNN},\text{LSTM},\text{Transformer}\}
+\]
+
+\[
+B=\{\text{Image},\text{Sequence},\text{Text}\}
+\]
+
+Define
+
+\[
+\begin{aligned}
+R=\{&
+(\text{CNN},\text{Image}),\\
+&(\text{LSTM},\text{Sequence}),\\
+&(\text{Transformer},\text{Text})
+\}.
+\end{aligned}
+\]
+
+Since $R\subseteq A\times B$, $R$ is a relation from $A$ to $B$.
+
+\end{frame}
 \begin{frame}{Equivalence Relation}
 
 \small
@@ -823,6 +867,107 @@ align=center
 
 The diagram shows the hierarchy of AI models. CNN and RNN are incomparable,
 but both are covered by Deep Learning.
+
+\end{frame}
+%-------------------------------------------------
+%-------------------------------------------------
+\begin{frame}{Chains and Antichains}
+
+\small
+
+\textbf{Chain}
+
+A chain is a subset of a poset in which every pair of elements is comparable.
+
+\textbf{Example:}
+
+\[
+\text{CNN}<\text{Deep Learning}
+<\text{Machine Learning}<\text{AI}
+\]
+
+\[
+\{\text{CNN},\text{Deep Learning},\text{Machine Learning},\text{AI}\}
+\]
+
+is a chain.
+
+\vspace{0.2cm}
+
+\textbf{Antichain}
+
+An antichain is a subset of a poset in which no two distinct elements
+are comparable.
+
+\textbf{Example:}
+
+CNN and RNN are both deep learning models, but neither is a subtype
+of the other.
+
+\[
+\{\text{CNN},\text{RNN}\}
+\]
+
+is an antichain.
+
+\end{frame}
+%-------------------------------------------------
+\begin{frame}{Chain and Antichain -- Hasse Diagram}
+
+\small
+
+\centering
+
+\begin{tikzpicture}[
+    every node/.style={
+        draw,
+        rounded corners,
+        minimum width=2.2cm,
+        minimum height=7mm
+    }
+]
+
+% Chain
+\node (AI) at (0,4) {AI};
+\node (ML) at (0,3) {Machine Learning};
+\node (DL) at (0,2) {Deep Learning};
+\node (CNN) at (0,1) {CNN};
+
+\draw (CNN)--(DL);
+\draw (DL)--(ML);
+\draw (ML)--(AI);
+
+% Antichain
+\node (CNN2) at (5,1) {CNN};
+\node (RNN2) at (7,1) {RNN};
+
+\end{tikzpicture}
+
+\vspace{0.3cm}
+
+\begin{columns}
+
+\column{0.48\textwidth}
+\centering
+\textbf{Chain}
+
+Every pair is comparable.
+
+\[
+CNN < DL < ML < AI
+\]
+
+\column{0.48\textwidth}
+\centering
+\textbf{Antichain}
+
+No two distinct elements are comparable.
+
+\[
+\{CNN,RNN\}
+\]
+
+\end{columns}
 
 \end{frame}
 
